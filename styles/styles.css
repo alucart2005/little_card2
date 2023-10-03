@@ -50,9 +50,6 @@ ul {
   border-radius: 15px;
   padding: 1.5em 2em;
   transition: 400ms background ease;
-  &:hover {
-    background: hsla(var(--hsl), 0.1);
-  }
   &:nth-child(1) {
     --hue: 165;
     --saturacion: 82.26%;
@@ -68,7 +65,11 @@ ul {
     --saturacion: 100%;
     --luminosidad: 48%;
   }
-  .card__heading{
+    &:hover {
+    --luminosidad: 98%;
+    background: hsla(var(--hsl), 0.1);
+  }
+.card__heading{
     font-size: 1.05em;
     font-weight: 600;
   }
@@ -112,16 +113,20 @@ ul {
   inset: 0;
   pointer-events: none;
   user-select: none;
-  opacity: var(--opacity, 0);
+  -webkit-mask: radial-gradient(
+    25rem 25rem at var(--x) var(--y), #000 1%, transparent 50%
+  );  opacity: var(--opacity, 0);
   mask: radial-gradient(
     25rem 25rem at var(--x) var(--y), #000 1%, transparent 50%
   );
+  transition: 0.5s ease;
   .card{
     background-color: hsla(var(--hsl),0.15);
     border-color: hsla(var(--hsl),1);
     box-shadow: 0 0 0 1px inset hsl(var(--hsl));
   }
   .cta{
+    grid-row: -1;
     display: block;
     width: 100%;
     background-color: hsl(var(--hsl));
